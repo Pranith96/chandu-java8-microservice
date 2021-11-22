@@ -1,0 +1,14 @@
+import java.util.function.Consumer;
+
+public class ConsumerExample implements Consumer<String> {
+
+	public static void main(String[] args) {
+
+	}
+
+	@Override
+	public void accept(String t) {
+		
+	}
+
+}

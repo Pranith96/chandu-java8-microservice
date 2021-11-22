@@ -1,0 +1,8 @@
+
+public class ConsumerExample implements Consumer<String> {
+
+	public static void main(String[] args) {
+
+	}
+
+}

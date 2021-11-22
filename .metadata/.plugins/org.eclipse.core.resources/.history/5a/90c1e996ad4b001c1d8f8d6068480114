@@ -1,0 +1,10 @@
+import java.util.function.Predicate;
+
+public class PredicateExample1 implements Predicate<Integer> {
+
+	@Override
+	public boolean test(Integer t) {
+		return false;
+	}
+
+}
