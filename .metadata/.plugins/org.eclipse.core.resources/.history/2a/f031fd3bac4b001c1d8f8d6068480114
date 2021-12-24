@@ -1,8 +1,0 @@
-
-public class ConsumerExample implements Consumer<Integer> {
-
-	public static void main(String[] args) {
-
-	}
-
-}
