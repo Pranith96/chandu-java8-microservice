@@ -7,21 +7,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "employee_table")
+@ApiModel(description = "Details About the Employee model")
 public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "employee_id")
+	@ApiModelProperty(notes = "The Unique Employee Id auto-increment")
 	private Integer employeeId;
 	@Column(name = "employee_name")
+	@ApiModelProperty(notes = "String as Employee name")
 	private String employeeName;
 	@Column(name = "mobile_number", length = 10)
+	@ApiModelProperty(notes = "String as mobile number")
 	private String mobileNumber;
 	@Column(name = "login_id", unique = true)
+	@ApiModelProperty(notes = "The Unique Login id")
 	private String loginId;
 	@Column(name = "password")
+	@ApiModelProperty(notes = "The String as password")
 	private String password;
 
 	public Integer getEmployeeId() {

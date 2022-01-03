@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.employee.entity.Employee;
+import com.employee.exception.EmployeeNotFoundException;
 import com.employee.repository.EmployeeRepository;
 
 @Service
@@ -31,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public List<Employee> getEmployees() {
 		List<Employee> employees = employeeRepository.findAll();
 		if (null == employees || employees.isEmpty()) {
-			throw new RuntimeException("Data is empty");
+			throw new EmployeeNotFoundException("Data is empty");
 		}
 		return employees;
 	}
@@ -40,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee getEmployeeDetailsById(Integer employeeId) {
 		Optional<Employee> employee = employeeRepository.findById(employeeId);
 		if (!employee.isPresent()) {
-			throw new RuntimeException("Data is not exists");
+			throw new EmployeeNotFoundException("Data is not exists for giving employee Id");
 		}
 		return employee.get();
 	}
@@ -51,7 +52,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		// employeeRepository.findByEmployeeName(employeeName);
 		Optional<List<Employee>> response = employeeRepository.getByEmployeeName(employeeName);
 		if (!response.isPresent()) {
-			throw new RuntimeException("Data is not exists");
+			throw new EmployeeNotFoundException("Data is not exists for giving employee name");
 		}
 		return response.get();
 	}
@@ -60,7 +61,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public String updateData(Employee employee) {
 		Optional<Employee> employeeResponse = employeeRepository.findById(employee.getEmployeeId());
 		if (!employeeResponse.isPresent()) {
-			throw new RuntimeException("Data is not exists");
+			throw new EmployeeNotFoundException("Data is not exists for giving employee Id");
 		}
 
 		if (employee.getEmployeeName() != null) {

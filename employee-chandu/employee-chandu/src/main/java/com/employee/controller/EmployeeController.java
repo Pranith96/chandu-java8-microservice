@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.employee.entity.Employee;
 import com.employee.service.EmployeeService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -26,18 +28,27 @@ public class EmployeeController {
 	EmployeeService employeeService;
 
 	@PostMapping("/add")
+	@ApiOperation(value = "Employee Creation API",
+    notes = "Please provide all the info for Employee account creation",
+    response = Employee.class)
 	public ResponseEntity<String> createEmployee(@RequestBody Employee employee) {
 		String response = employeeService.addEmployee(employee);
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 
 	@GetMapping("/get")
+	@ApiOperation(value = "Employees list fetching",
+    notes = "Please provide all the info for fetching employees list",
+    response = Employee.class)
 	public ResponseEntity<List<Employee>> getAllEmployees() {
 		List<Employee> response = employeeService.getEmployees();
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
 	@GetMapping("/get/employeeData/{employeeId}")
+	@ApiOperation(value = "Employee data fetching with employee ID ",
+    notes = "Please provide employee id for fetching employee records",
+    response = Employee.class)
 	public ResponseEntity<Employee> getEmployee(@PathVariable("employeeId") Integer employeeId) {
 		Employee response = employeeService.getEmployeeDetailsById(employeeId);
 		return ResponseEntity.status(HttpStatus.OK).body(response);
