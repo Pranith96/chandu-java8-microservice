@@ -31,8 +31,8 @@ public class EmployeeController {
 	@ApiOperation(value = "Employee Creation API",
     notes = "Please provide all the info for Employee account creation",
     response = Employee.class)
-	public ResponseEntity<String> createEmployee(@RequestBody Employee employee) {
-		String response = employeeService.addEmployee(employee);
+	public ResponseEntity<String> createEmployee(@RequestBody Employee request) {
+		String response = employeeService.addEmployee(request);
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 

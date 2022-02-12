@@ -9,7 +9,7 @@ public class SupplierExampleMain {
 		Integer i = example.get();
 		System.out.println(i);
 
-		Supplier<Integer> data = () ->   new Random().nextInt();
+		Supplier<Integer> data = () -> new Random().nextInt();
 		Integer k = data.get();
 		System.out.println(k);
 	}
